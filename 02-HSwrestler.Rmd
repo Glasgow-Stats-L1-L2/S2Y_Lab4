@@ -41,8 +41,8 @@ opts_a <- c("The random errors have mean zero.", "The random errors have constan
 Based on the plot of standardised residuals versus fitted values, we can see that the points are fairly evenly scattered above and below the zero line. This suggests that it is reasonable to assume that the random errors have mean zero.
 
 The vertical variation of the points in this plot `r mcq(c("is fairly constant across the range of the fitted values", answer = "slightly decreases as fitted values increase", "slightly increases as fitted values increase"))`. Hence, it seems `r mcq(c("very reasonable", answer = "quite unreasonable", "very unreasonable"))` to assume that the random errors have constant variance. 
-
 <br>
+
 (d) Produce a normal probability plot (Q-Q plot) of the residuals.
 
 `r hide("Hint")`
@@ -56,8 +56,8 @@ qqline(rstandard(Model), col = "red", lwd = 2)
 
 <br>
 From the plot, we can see that the points lie `r mcq(c("exactly on", answer = "somewhat close to", "away from"))` the line of equality ($y=x$). This means that it is `r mcq(c("very reasonable", answer = "quite reasonable","not reasonable"))` to assume that `r mcq(c("the random errors have mean zero", "the random errors are independent", answer = "quite reasonable","the random errors are normally distributed"))`. 
-
 <br>
+
 (e) plot the histogram of residuals.
 
 `r hide("Hint")`
@@ -73,7 +73,6 @@ From the plot above, the histogram `r mcq(c(answer = "shows", "does not show"))`
 
 ## Regression output {-#regression-hs}
 
-<br>
 (f) Produce the summary table of the regression model and the ANOVA table. 
 
 ```{r summary-output-hs, eval = TRUE, echo = FALSE, webex.hide="Solution"}
@@ -83,6 +82,7 @@ anova(Model)
 
 <br>
 The summary table tells us `r fitb(c(88.32,88.3,88))`% of variation in hydrostatic fat can be explained by taking into account abdonimal fat and tricep fat by using a multiple linear regression model. 
+<br>
 
 (g) Which of the two statistics, $R^2$ and $R^2$ (adj), is more appropriate to assess the model goodness-of-fit? 
 

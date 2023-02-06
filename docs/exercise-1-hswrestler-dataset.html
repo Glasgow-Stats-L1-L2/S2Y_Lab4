@@ -219,13 +219,15 @@ Solution
 </div>
 <p><br>
 Which of the following assumptions cannot be checked through the plot of the residuals versus the fitted values?</p>
-<div id="radio_HQVIYOEFBC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HQVIYOEFBC" value=""></input> <span>The random errors have mean zero.</span></label><label><input type="radio" autocomplete="off" name="radio_HQVIYOEFBC" value=""></input> <span>The random errors have constant variance.</span></label><label><input type="radio" autocomplete="off" name="radio_HQVIYOEFBC" value="answer"></input> <span>The random errors are independent.</span></label>
+<div id="radio_SSXUPHMJOP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SSXUPHMJOP" value=""></input> <span>The random errors have mean zero.</span></label><label><input type="radio" autocomplete="off" name="radio_SSXUPHMJOP" value=""></input> <span>The random errors have constant variance.</span></label><label><input type="radio" autocomplete="off" name="radio_SSXUPHMJOP" value="answer"></input> <span>The random errors are independent.</span></label>
 </div>
 <p>Based on the plot of standardised residuals versus fitted values, we can see that the points are fairly evenly scattered above and below the zero line. This suggests that it is reasonable to assume that the random errors have mean zero.</p>
-<p>The vertical variation of the points in this plot <select class='webex-select'><option value='blank'></option><option value=''>is fairly constant across the range of the fitted values</option><option value='answer'>slightly decreases as fitted values increase</option><option value=''>slightly increases as fitted values increase</option></select>. Hence, it seems <select class='webex-select'><option value='blank'></option><option value=''>very reasonable</option><option value='answer'>quite unreasonable</option><option value=''>very unreasonable</option></select> to assume that the random errors have constant variance.</p>
-<p><br>
-(d) Produce a normal probability plot (Q-Q plot) of the residuals.</p>
+<p>The vertical variation of the points in this plot <select class='webex-select'><option value='blank'></option><option value=''>is fairly constant across the range of the fitted values</option><option value='answer'>slightly decreases as fitted values increase</option><option value=''>slightly increases as fitted values increase</option></select>. Hence, it seems <select class='webex-select'><option value='blank'></option><option value=''>very reasonable</option><option value='answer'>quite unreasonable</option><option value=''>very unreasonable</option></select> to assume that the random errors have constant variance.
+<br></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Produce a normal probability plot (Q-Q plot) of the residuals.</li>
+</ol>
 <div class="webex-solution">
 <button>
 Hint
@@ -241,9 +243,11 @@ Solution
 <p><img src="main_files/figure-html/qq-plot-hs-1.png" width="672" /></p>
 </div>
 <p><br>
-From the plot, we can see that the points lie <select class='webex-select'><option value='blank'></option><option value=''>exactly on</option><option value='answer'>somewhat close to</option><option value=''>away from</option></select> the line of equality (<span class="math inline">\(y=x\)</span>). This means that it is <select class='webex-select'><option value='blank'></option><option value=''>very reasonable</option><option value='answer'>quite reasonable</option><option value=''>not reasonable</option></select> to assume that <select class='webex-select'><option value='blank'></option><option value=''>the random errors have mean zero</option><option value=''>the random errors are independent</option><option value='answer'>quite reasonable</option><option value=''>the random errors are normally distributed</option></select>.</p>
-<p><br>
-(e) plot the histogram of residuals.</p>
+From the plot, we can see that the points lie <select class='webex-select'><option value='blank'></option><option value=''>exactly on</option><option value='answer'>somewhat close to</option><option value=''>away from</option></select> the line of equality (<span class="math inline">\(y=x\)</span>). This means that it is <select class='webex-select'><option value='blank'></option><option value=''>very reasonable</option><option value='answer'>quite reasonable</option><option value=''>not reasonable</option></select> to assume that <select class='webex-select'><option value='blank'></option><option value=''>the random errors have mean zero</option><option value=''>the random errors are independent</option><option value='answer'>quite reasonable</option><option value=''>the random errors are normally distributed</option></select>.
+<br></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>plot the histogram of residuals.</li>
+</ol>
 <div class="webex-solution">
 <button>
 Hint
@@ -262,8 +266,9 @@ From the plot above, the histogram <select class='webex-select'><option value='b
 </div>
 <div id="regression-hs" class="section level2 unnumbered hasAnchor">
 <h2>Regression output<a href="exercise-1-hswrestler-dataset.html#regression-hs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><br>
-(f) Produce the summary table of the regression model and the ANOVA table.</p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Produce the summary table of the regression model and the ANOVA table.</li>
+</ol>
 <div class="webex-solution">
 <button>
 Solution
@@ -298,13 +303,14 @@ Solution
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <p><br>
-The summary table tells us <input class='webex-solveme nospaces' size='5' data-answer='["88.32","88.3","88"]'/>% of variation in hydrostatic fat can be explained by taking into account abdonimal fat and tricep fat by using a multiple linear regression model.</p>
+The summary table tells us <input class='webex-solveme nospaces' size='5' data-answer='["88.32","88.3","88"]'/>% of variation in hydrostatic fat can be explained by taking into account abdonimal fat and tricep fat by using a multiple linear regression model.
+<br></p>
 <ol start="7" style="list-style-type: lower-alpha">
 <li>Which of the two statistics, <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2\)</span> (adj), is more appropriate to assess the model goodness-of-fit?</li>
 </ol>
-<div id="radio_VURIYPWIBS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VURIYPWIBS" value="answer"></input> <span><span class="math inline">\(R^2\)</span> (adj), because it adjusts for the fact
-that there is more than one predictor variable in the model.</span></label><label><input type="radio" autocomplete="off" name="radio_VURIYPWIBS" value=""></input> <span><span class="math inline">\(R^2\)</span>, because it can be interpreted more easily.</span></label>
+<div id="radio_TDFRZNJIXN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TDFRZNJIXN" value="answer"></input> <span><span class="math inline">\(R^2\)</span> (adj), because it adjusts for the fact
+that there is more than one predictor variable in the model.</span></label><label><input type="radio" autocomplete="off" name="radio_TDFRZNJIXN" value=""></input> <span><span class="math inline">\(R^2\)</span>, because it can be interpreted more easily.</span></label>
 </div>
 
 </div>
