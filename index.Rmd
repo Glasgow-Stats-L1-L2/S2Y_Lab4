@@ -1,0 +1,46 @@
+---
+title: |
+    | S2Y Lab 4
+    | How good is the model? – $R^2$ and residual plots
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+---
+
+```{r setup, include = FALSE}
+library(webexercises)
+library(tinytex)
+library(dplyr)
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+
+diamonds <- read.csv("diamonds.csv")
+```
+
+
+```{r include=FALSE, echo=FALSE}
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+
+# Welcome to S2Y Lab 4
+
+Intended Learning Outcomes:
+
+- Assess the goodness of fit of linear models based on $R^2$ and $R^2$ (adj);
+- Produce residual plots; 
+- Assess the assumptions of a linear model using residual plots.
+
+## Introduction {-#intro}
+
+In the lectures $R^2$ was used to measure the goodness-of-fit of the chosen model, and the idea of residuals was introduced. In today's practical we will use RStudio to find values of $R^2$, and use residual plots to examine the assumptions underlying the linear model.
+
+Similarly to previous practicals, we will use the `lm()` command to fit linear models. We will obtain residuals and standardised residuals from linear models that allow us to check assumptions. We will check our assumptions using:
+
+(i) plots of residuals versus fitted values;
+(ii) Normal Q-Q plots;
+(iii) histograms of the residuals.

@@ -1,0 +1,11 @@
+fig:diamonds-plot
+fig:resids-plot
+fig:qq-plot
+fig:hist-plot
+fig:diamonds-plot-line
+welcome-to-s2y-lab-4
+example-1-price-of-diamonds
+methods
+exercise-1-hswrestler-dataset
+assumption-checking
+report-task-sugar-in-potatoes

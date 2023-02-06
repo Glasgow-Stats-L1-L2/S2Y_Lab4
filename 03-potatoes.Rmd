@@ -1,0 +1,33 @@
+# REPORT TASK: Sugar in potatoes
+
+**Context**: Bags of potatoes were stored for various periods of time after lifting. 14 bags were stored and these were then studied after various times in storage to identify the sugar (glucose) content (mg/100gms) of the potatoes. The potatoes were to be used for potato crisp manufacturing and there was interest in identifying the glucose content at specific storage times.
+
+**Data**: potatoesstorage.csv
+
+**Columns**:
+
+* C1: Glucose - Glucose content (mg/100gms)
+
+* C2: Weeks - Storage time
+
+Read in the data using:
+<p align='center'>
+`potatoes <- read.csv("potatoesstorage.csv")`
+</p>
+
+**Question of interest**: Can the glucose content of potatoes be predicted from the storage time?
+
+**Tasks**
+
+1. Use an appropriate plot to investigate the question of interest. Comment on your plot, making reference to the question of interest. Is it appropriate to calculate a correlation coefficient in this context? Justify your answer.
+
+2. Use an **appropriate** regression model to investigate the question of interest and comment appropriately.
+
+3. Check the assumptions from your model and comment on how well your model fits the data. State any reservations that you have about your model.
+
+4. Display a plot of your fitted model and use this plot and/or your fitted model equation to obtain a point estimate of the glucose content at two plausible storage times of your choice \\
+(Hint: use the `lines(Weeks, fitted(model))` command).
+
+5. Produce a statistical report, following the template in the sample report provided, which includes your analyses and comments for the tasks above.
+
+**Please see the PDF file "Lab 4: Individual project" on Moodle (under tab "Assessments") for instructions on report submission and sample report.**

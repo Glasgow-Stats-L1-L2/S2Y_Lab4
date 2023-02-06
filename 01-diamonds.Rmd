@@ -1,0 +1,118 @@
+# Example 1: Price of diamonds
+
+A sample of 48 diamond rings was obtained in Singapore. The price of each ring and the weight of the diamond stone in the ring were recorded. The data are available in the `diamonds.csv` file. Our main question of interest is if the price of a diamond ring can be determined from the weight of the diamond stone in the ring.
+
+## Methods
+
+We will model the relationship between price and weight using a simple linear regression model and then check if this model is appropriate for the data. The model is given as 
+
+<p align = "center">
+$Y_i = \alpha + \beta x_i + \epsilon_i$,
+</p>
+
+where
+(a) the deterministic part of the model captures all the non-random structure in the data;
+(b) the random errors, $\epsilon_i$, have constant variance;
+(c) the random errors, $\epsilon_i$, are independent;
+(d) the random errors, $\epsilon_i$, are normally distributed;
+(e) the explanatory variable, $x$, is recorded without error.
+
+We will consider assumptions (a)-(d) in this practical (assumption (e) cannot be assessed by examining the data). See **Chapter 2** of the lecture notes for details of these assumptions. 
+
+## Exploratory analysis {-#diamonds-3}
+
+Firstly, we will produce a scatterplot of the response variable `Price` ($y$), against the predictor variable `Weight` ($x$). 
+
+```{r diamonds-plot, eval=TRUE, echo=TRUE, fig.align='center', fig.cap="Scatterplot of `Price` versus `Weight`."}
+diamonds <- read.csv("diamonds.csv")
+plot(Price ~ Weight, data = diamonds, xlab = "Weight (carats)", ylab = "Price (Singapore Dollars)")
+```
+
+What can we say about the relationship between `Price` and `Weight`?
+
+```{r diamonds-opts, eval=TRUE, echo=FALSE}
+opts_d <- c("There is a weak positive relationship between weight and price.", "There is a moderate negative relationship between weight and price.", answer = "There is a strong positive relationship between weight and price.", "There is no relationship between weight and price.")
+```
+
+`r longmcq(opts_d)`
+
+## Statistical analysis {-#diamonds-4}
+
+A simple linear regression model can be fitted in `R` using the `lm()` command.
+
+We will fit a simple linear regression model to the `diamonds` data, with `Price` as the response variable and `Weight` as the explanatory variable. This is done using the code:
+
+```{r model-fit, eval = TRUE}
+model1 <- lm(Price ~ Weight, data = diamonds)
+```
+
+### Assumption checking {-#diamonds-as}
+
+Before assessing the fit of the model, it is important to check that the assumptions underlying the model are satisfied. In order to do this, we need to obtain the residuals after fitting the model. These can be obtained using the commands:
+
+\begin{center}
+`residuals(model1)`
+`rstandard(model1)`
+\end{center}
+
+with the latter command providing the standardised residuals. These commands can be used to produce a plot of the residuals versus the fitted values and a normal probability plot (Q-Q plot) of the residuals to graphically assess assumptions (a), (b), and (d).
+
+The standardised residuals versus fitted values is obtained by:
+
+```{r resids-plot, eval = TRUE, echo = TRUE, fig.cap="Standardised residuals versus fitted values from `Model1`.", fig.align='center'}
+plot(rstandard(model1) ~ fitted(model1))
+abline(h=0, lwd=1, lty = 2)
+```
+
+Figure \@ref(fig:resids-plot) displays the plot of standardised residuals versus fitted values, where we can see that the points are fairly evenly scattered above and below the zero line. The points are slightly grouped together towards the lower fitted values. However, this effect is not very marked and thus it is reasonable to assume that the linear relationship between price and weight captures the non-random structure in the data. This suggests that it is reasonable to assume that **the random errors have mean zero** and hence that a linear regression model is appropriate in this case.
+
+The vertical variation of the points in Figure 2 is fairly constant across the range of the fitted values and does not seem to depend on the fitted values. Hence, it seems reasonable to assume that **the random errors have constant variance**. The **independence of the random errors** seems to be a reasonable assumption given that the data were taken from different rings.
+
+The normal probability (Q-Q) plot is obtained by using the function `qqnorm()`, and a line can be added by using the function `qqline()`.
+
+```{r qq-plot, eval = TRUE, echo = TRUE, fig.align='center', fig.cap="Normal probability (Q-Q) plot from `Model1`."}
+qqnorm(rstandard(model1))
+qqline(rstandard(model1), col = "red", lwd = 2)
+```
+
+Figure \@ref(fig:qq-plot) displays the normal probability plot, where we can see that the points lie fairly close to the line of equality ($y = x$) and so it is reasonable to assume that **the random errors are normally distributed**. Note that this assumption is required only when we wish to make inferences about the parameters of the model to be applied to some wider population.
+A histogram of the residuals can be obtained by using the function `hist()`:
+
+```{r hist-plot, eval = TRUE, echo = TRUE, fig.align='center', fig.cap="Histogram of the standardised residuals obtained from `Model1`."}
+hist(rstandard(model1))
+```
+
+Figure \@ref{fig:hist-plot} displays a histogram of the standardised residuals and shows a reasonably bell-shaped curve, and hence normality appears reasonable.
+
+### Regression output {-#regression}
+
+We now examine the regression output by typing:
+
+```{r summary-output, eval = TRUE, echo = TRUE}
+summary(model1)
+```
+
+The analysis of variance (ANOVA) table can be produced by using the function `anova()`.
+
+```{r anova-output, eval = TRUE, echo = TRUE}
+anova(model1)
+```
+
+From the summary table output we can see that the regression equation is
+
+<p align = "center">
+Price = `r fitb(-259.63)` + `r fitb(3721.02)` $\cdot$ Weight
+</p>
+
+The value of the coefficient of determination, $R^2$, is 97.83%. This gives us the percentage of variation in `Price` that is explained by the linear regression model with `Weight` as a predictor. Hence 97.83% of the variation in the price of a diamond ring is explained by taking into account the weight of the diamond using our simple linear regression model. Hence, the model gives an excellent fit to the data.
+
+We can plot the data with the fitted line superimposed, such as in Figure \@ref{fig:diamonds-plot-line}, using the command `abline()` after plotting the data. 
+
+```{r diamonds-plot-line, eval=TRUE, echo=TRUE, fig.align='center', fig.cap="Scatterplot of `Price` versus `Weight` with the fitted line from `Model1` superimposed."}
+plot(Price ~ Weight, data = diamonds, xlab = "Weight (carats)", ylab = "Price (Singapore Dollars)")
+abline(model1, col = "red")
+```
+
+### Conclusion {-#conclusion}
+
+A simple linear regression model has provided an excellent and appropriate model for predicting the price of a diamond ring from the weight of the diamond in the ring. Almost all of the variability in the response has been explained and the assumptions appear justified.

@@ -1,0 +1,90 @@
+# Exercise 1: HSWRESTLER dataset
+
+Recall the `HSWRESTLER` dataset from Lab 1, which measures the body fat of 78 high school wrestlers using hydrostatic weighing, skin fold measurements and the Tanita body fat scale. Our main question of interest is if hydrostatic fat (`hwfat`) can be predicted from abdominal fat (`abs`) and tricep fat (`triceps`).
+
+**QUESTION**: 
+
+(a) Produce a scatterplot of the response variable `hwfat` against the predictor variable `abs` and `triceps`. 
+```{r, eval=TRUE, webex.hide="Solution", message=FALSE}
+library(PASWR)
+plot(HWFAT ~ ABS, data = HSwrestler)
+plot(HWFAT ~ TRICEPS, data = HSwrestler)
+```
+
+(b) Build a multiple linear regression model with `hwfat` as the response variable and `abs` and `triceps` as predictor variables. 
+
+```{r, eval=TRUE, webex.hide="Solution"}
+Model <- lm(HWFAT ~ ABS + TRICEPS, data = HSwrestler)
+```
+
+## Assumption checking
+
+(c) Produce a plot of the residuals versus the fitted values.
+
+`r hide("Hint")`
+Use the function `plot()` with `rstandard()` and `fitted()` for the residuals versus fitted values.
+`r unhide()`
+
+```{r resids-plot-hs, eval = TRUE, echo = TRUE, webex.hide="Solution"}
+plot(rstandard(Model) ~ fitted(Model))
+abline(h=0, lwd=1, lty = 2)
+```
+
+<br>
+Which of the following assumptions cannot be checked through the plot of the residuals versus the fitted values? 
+```{r assumption_opts, eval=TRUE, echo=FALSE}
+opts_a <- c("The random errors have mean zero.", "The random errors have constant variance.", answer = "The random errors are independent.")
+```
+
+`r longmcq(opts_a)`
+
+Based on the plot of standardised residuals versus fitted values, we can see that the points are fairly evenly scattered above and below the zero line. This suggests that it is reasonable to assume that the random errors have mean zero.
+
+The vertical variation of the points in this plot `r mcq(c("is fairly constant across the range of the fitted values", answer = "slightly decreases as fitted values increase", "slightly increases as fitted values increase"))`. Hence, it seems `r mcq(c("very reasonable", answer = "quite unreasonable", "very unreasonable"))` to assume that the random errors have constant variance. 
+
+<br>
+(d) Produce a normal probability plot (Q-Q plot) of the residuals.
+
+`r hide("Hint")`
+Use the function `qqnorm()` with the `rstandard()` function, and add a line with the function `qqline()`.
+`r unhide()`
+
+```{r qq-plot-hs, eval=TRUE, echo=TRUE, webex.hide="Solution"}
+qqnorm(rstandard(Model))
+qqline(rstandard(Model), col = "red", lwd = 2)
+```
+
+<br>
+From the plot, we can see that the points lie `r mcq(c("exactly on", answer = "somewhat close to", "away from"))` the line of equality ($y=x$). This means that it is `r mcq(c("very reasonable", answer = "quite reasonable","not reasonable"))` to assume that `r mcq(c("the random errors have mean zero", "the random errors are independent", answer = "quite reasonable","the random errors are normally distributed"))`. 
+
+<br>
+(e) plot the histogram of residuals.
+
+`r hide("Hint")`
+Use the function `hist()` and `rstandard()` to plot the histogram of residuals.
+`r unhide()`
+
+```{r hist-plot-hs, eval=TRUE, echo=TRUE, webex.hide="Solution"}
+hist(rstandard(Model))
+```
+
+<br>
+From the plot above, the histogram `r mcq(c(answer = "shows", "does not show"))` a reasonably bell-shaped curve, and hence the normality assumption appears `r mcq(c("unreasonable", answer = "quite reasonable"))`.
+
+## Regression output {-#regression-hs}
+
+<br>
+(f) Produce the summary table of the regression model and the ANOVA table. 
+
+```{r summary-output-hs, eval = TRUE, echo = FALSE, webex.hide="Solution"}
+summary(Model)
+anova(Model)
+```
+
+<br>
+The summary table tells us `r fitb(c(88.32,88.3,88))`% of variation in hydrostatic fat can be explained by taking into account abdonimal fat and tricep fat by using a multiple linear regression model. 
+
+(g) Which of the two statistics, $R^2$ and $R^2$ (adj), is more appropriate to assess the model goodness-of-fit? 
+
+`r longmcq(c(answer = "$R^2$ (adj), because it adjusts for the fact
+that there is more than one predictor variable in the model.", "$R^2$, because it can be interpreted more easily."))`
